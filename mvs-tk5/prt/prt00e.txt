@@ -1,0 +1,298 @@
+                                                    MM        MM  FFFFFFFFFFFF       11
+                                                   MMM      MMM  FFFFFFFFFFFF      111
+                                                  MMMM    MMMM  FF               1111
+                                                 MM MM  MM MM  FF                 11
+                                                MM  MMMM  MM  FF                 11
+                                               MM   MM   MM  FFFFFFFF           11
+                                              MM        MM  FFFFFFFF           11
+                                             MM        MM  FF                 11
+                                            MM        MM  FF                 11
+                                           MM        MM  FF                 11
+                                          MM        MM  FF             1111111111
+                                         MM        MM  FF             1111111111
+
+
+
+                   SSSSSSSSSS    2222222222     00000000                                               AAAAAAAAAA
+                  SSSSSSSSSSSS  222222222222   0000000000                                             AAAAAAAAAAAA
+                  SS        SS  22        22  00      0000                                            AA        AA
+                  SS                      22  00     00 00                                            AA        AA
+                  SSS                     22  00    00  00                                            AA        AA
+                   SSSSSSSSS             22   00   00   00                                            AAAAAAAAAAAA
+                    SSSSSSSSS          22     00  00    00                                            AAAAAAAAAAAA
+                           SSS       22       00 00     00                                            AA        AA
+                            SS     22         0000      00                                            AA        AA
+                  SS        SS   22           000       00                                            AA        AA
+                  SSSSSSSSSSSS  222222222222   0000000000                                             AA        AA
+                   SSSSSSSSSS   222222222222    00000000                                              AA        AA
+
+
+****A  START  STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20  START  A****
+****A  START  STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20  START  A****
+****A  START  STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20  START  A****
+****A  START  STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20  START  A****
+IRB103I MF/1 OPTIONS IN EFFECT
+IRB103I   CPU
+IRB103I   PAGING
+IRB103I   CHAN
+IRB103I   WKLD(PERIOD)
+IRB103I   DEVICE(UNITR,GRAPH,DASD,COMM,TAPE,CHRDR)
+IRB103I   RECORD
+IRB103I   CYCLE(250)
+IRB103I   INTERVAL(15M)
+IRB103I   NOSTOP
+IRB103I   SYSOUT(A)
+IRB103I   REPORT(REALTIME)
+IRB103I   MEMBER(00)                                                    MM        MM  FFFFFFFFFFFF       11
+                                                   MMM      MMM  FFFFFFFFFFFF      111
+                                                  MMMM    MMMM  FF               1111
+                                                 MM MM  MM MM  FF                 11
+                                                MM  MMMM  MM  FF                 11
+                                               MM   MM   MM  FFFFFFFF           11
+                                              MM        MM  FFFFFFFF           11
+                                             MM        MM  FF                 11
+                                            MM        MM  FF                 11
+                                           MM        MM  FF                 11
+                                          MM        MM  FF             1111111111
+                                         MM        MM  FF             1111111111
+
+
+
+                   SSSSSSSSSS    2222222222     00000000                                               AAAAAAAAAA
+                  SSSSSSSSSSSS  222222222222   0000000000                                             AAAAAAAAAAAA
+                  SS        SS  22        22  00      0000                                            AA        AA
+                  SS                      22  00     00 00                                            AA        AA
+                  SSS                     22  00    00  00                                            AA        AA
+                   SSSSSSSSS             22   00   00   00                                            AAAAAAAAAAAA
+                    SSSSSSSSS          22     00  00    00                                            AAAAAAAAAAAA
+                           SSS       22       00 00     00                                            AA        AA
+                            SS     22         0000      00                                            AA        AA
+                  SS        SS   22           000       00                                            AA        AA
+                  SSSSSSSSSSSS  222222222222   0000000000                                             AA        AA
+                   SSSSSSSSSS   222222222222    00000000                                              AA        AA
+
+
+****A   END   STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20   END   A****
+****A   END   STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20   END   A****
+****A   END   STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20   END   A****
+****A   END   STC   20  MF1                             ROOM       12.26.26 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   20   END   A****
+                  SSSSSSSSSS   HH        HH  UU        UU  TTTTTTTTTTTT  DDDDDDDDD     OOOOOOOOOOOO  WW        WW  NN        NN
+                SSSSSSSSSSSS  HH        HH  UU        UU  TTTTTTTTTTTT  DDDDDDDDDD    OOOOOOOOOOOO  WW        WW  NNN       NN
+               SS        SS  HH        HH  UU        UU       TT       DD       DD   OO        OO  WW        WW  NNNN      NN
+              SS            HH        HH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN NN     NN
+             SSS           HH        HH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN  NN    NN
+             SSSSSSSSS    HHHHHHHHHHHH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN   NN   NN
+             SSSSSSSSS   HHHHHHHHHHHH  UU        UU       TT       DD        DD  OO        OO  WW   WW   WW  NN    NN  NN
+                   SSS  HH        HH  UU        UU       TT       DD        DD  OO        OO  WW  WWWW  WW  NN     NN NN
+                   SS  HH        HH  UU        UU       TT       DD        DD  OO        OO  WW WW  WW WW  NN      NNNN
+        SS        SS  HH        HH  UU        UU       TT       DD       DD   OO        OO  WWWW    WWWW  NN       NNN
+       SSSSSSSSSSSS  HH        HH  UUUUUUUUUUUU       TT       DDDDDDDDDD    OOOOOOOOOOOO  WWW      WWW  NN        NN
+       SSSSSSSSSS   HH        HH   UUUUUUUUUU        TT       DDDDDDDDD     OOOOOOOOOOOO  WW        WW  NN         N
+
+
+
+                    JJJJJJJJJJ       11                                                                AAAAAAAAAA
+                    JJJJJJJJJJ      111                                                               AAAAAAAAAAAA
+                        JJ         1111                                                               AA        AA
+                        JJ           11                                                               AA        AA
+                        JJ           11                                                               AA        AA
+                        JJ           11                                                               AAAAAAAAAAAA
+                        JJ           11                                                               AAAAAAAAAAAA
+                        JJ           11                                                               AA        AA
+                  JJ    JJ           11                                                               AA        AA
+                  JJ    JJ           11                                                               AA        AA
+                  JJJJJJJJ       1111111111                                                           AA        AA
+                   JJJJJJ        1111111111                                                           AA        AA
+
+
+****A  START  JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1  START  A****
+****A  START  JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1  START  A****
+****A  START  JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1  START  A****
+****A  START  JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1  START  A****
+                                                J E S 2   J O B   L O G
+
+
+12.28.09 JOB    1  $HASP373 SHUTDOWN STARTED - INIT  1 - CLASS A - SYS TK5R
+12.28.09 JOB    1  IEF403I SHUTDOWN - STARTED - TIME=12.28.09
+12.28.09 JOB    1  IEFACTRT - Stepname  Procstep  Program   Retcode
+12.28.09 JOB    1  SHUTDOWN   SHUTDOWN  SHUTDOWN  BSPHRCMD  RC= 0000
+12.28.09 JOB    1  IEF404I SHUTDOWN - ENDED - TIME=12.28.09
+12.28.09 JOB    1  $HASP395 SHUTDOWN ENDED
+
+
+------ JES2 JOB STATISTICS ------
+
+
+ 15 DEC 23 JOB EXECUTION DATE
+
+
+        14 CARDS READ
+
+
+        40 SYSOUT PRINT RECORDS
+
+
+         0 SYSOUT PUNCH RECORDS
+
+
+      0.00 MINUTES EXECUTION TIME
+    1     //SHUTDOWN JOB (TK5),                                                   JOB    1
+          //             'Shutdown TK5',
+          //             CLASS=A,
+          //             MSGCLASS=A,
+          //             MSGLEVEL=(0,0),
+          //            USER=HERC01,PASSWORD=         GENERATED BY IKJEFF10
+IEF142I SHUTDOWN SHUTDOWN SHUTDOWN - STEP WAS EXECUTED - COND CODE 0000
+IEF373I STEP /SHUTDOWN/ START 23349.1228
+IEF374I STEP /SHUTDOWN/ STOP  23349.1228 CPU    0MIN 00.02SEC SRB    0MIN 00.00SEC VIRT    16K SYS   192K
+************************************************************************************************************************************
+*     1. Jobstep of job: SHUTDOWN    Stepname: SHUTDOWN    Program name: BSPHRCMD   Executed on 15.12.23 from 12.28.09 to 12.28.09 *
+*         elapsed time  00:00:00,03                      CPU-Identifier:  TK5R           Page-in:      0                           *
+*             CPU time  00:00:00,02               Virtual Storage used:     16K         Page-out:      0                           *
+*           corr. CPU:  00:00:00,02   CPU time has been corrected by  1 / 1,0  multiplier                                          *
+*                                                                                                                                  *
+*     I/O Operation                                                                                                                *
+*     Number of records read via DD * or DD DATA:      0                                                                           *
+*     DMY.......0 DMY.......0                                                                                                      *
+*                                                                                                                                  *
+*                                          Charge for step (w/o SYSOUT):          0,03                                             *
+************************************************************************************************************************************
+IEF375I  JOB /SHUTDOWN/ START 23349.1228
+IEF376I  JOB /SHUTDOWN/ STOP  23349.1228 CPU    0MIN 00.02SEC SRB    0MIN 00.00SEC
+BSPHRCMD Version 1.0.2                                                                                                      PAGE   1
+
+                                                                    |l      _,,,---,,_
+                                                              ZZZzz /,:.-':'    -.  ;-;;,
+                                                                   |,4-  ) )-,_. ,( (  :'-'
+                                                                  '---''(_/--'  :-')_)
+
+                                                            Placed into the Hercules Domain
+                                                            by Volker Bandke, BSP GmbHBSPHC91I - Processing command: script scripts/shutdownBSPHC99I - End of processing, MAXRC=0000                  SSSSSSSSSS   HH        HH  UU        UU  TTTTTTTTTTTT  DDDDDDDDD     OOOOOOOOOOOO  WW        WW  NN        NN
+                SSSSSSSSSSSS  HH        HH  UU        UU  TTTTTTTTTTTT  DDDDDDDDDD    OOOOOOOOOOOO  WW        WW  NNN       NN
+               SS        SS  HH        HH  UU        UU       TT       DD       DD   OO        OO  WW        WW  NNNN      NN
+              SS            HH        HH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN NN     NN
+             SSS           HH        HH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN  NN    NN
+             SSSSSSSSS    HHHHHHHHHHHH  UU        UU       TT       DD        DD  OO        OO  WW        WW  NN   NN   NN
+             SSSSSSSSS   HHHHHHHHHHHH  UU        UU       TT       DD        DD  OO        OO  WW   WW   WW  NN    NN  NN
+                   SSS  HH        HH  UU        UU       TT       DD        DD  OO        OO  WW  WWWW  WW  NN     NN NN
+                   SS  HH        HH  UU        UU       TT       DD        DD  OO        OO  WW WW  WW WW  NN      NNNN
+        SS        SS  HH        HH  UU        UU       TT       DD       DD   OO        OO  WWWW    WWWW  NN       NNN
+       SSSSSSSSSSSS  HH        HH  UUUUUUUUUUUU       TT       DDDDDDDDDD    OOOOOOOOOOOO  WWW      WWW  NN        NN
+       SSSSSSSSSS   HH        HH   UUUUUUUUUU        TT       DDDDDDDDD     OOOOOOOOOOOO  WW        WW  NN         N
+
+
+
+                    JJJJJJJJJJ       11                                                                AAAAAAAAAA
+                    JJJJJJJJJJ      111                                                               AAAAAAAAAAAA
+                        JJ         1111                                                               AA        AA
+                        JJ           11                                                               AA        AA
+                        JJ           11                                                               AA        AA
+                        JJ           11                                                               AAAAAAAAAAAA
+                        JJ           11                                                               AAAAAAAAAAAA
+                        JJ           11                                                               AA        AA
+                  JJ    JJ           11                                                               AA        AA
+                  JJ    JJ           11                                                               AA        AA
+                  JJJJJJJJ       1111111111                                                           AA        AA
+                   JJJJJJ        1111111111                                                           AA        AA
+
+
+****A   END   JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1   END   A****
+****A   END   JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1   END   A****
+****A   END   JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1   END   A****
+****A   END   JOB    1  SHUTDOWN  Shutdown TK5          ROOM       12.28.09 PM 15 DEC 23  PRINTER1  SYS TK5R  JOB    1   END   A****
+                                                    TTTTTTTTTTTT   SSSSSSSSSS   OOOOOOOOOOOO
+                                                   TTTTTTTTTTTT  SSSSSSSSSSSS  OOOOOOOOOOOO
+                                                       TT       SS        SS  OO        OO
+                                                      TT       SS            OO        OO
+                                                     TT       SSS           OO        OO
+                                                    TT        SSSSSSSSS    OO        OO
+                                                   TT         SSSSSSSSS   OO        OO
+                                                  TT                SSS  OO        OO
+                                                 TT                 SS  OO        OO
+                                                TT       SS        SS  OO        OO
+                                               TT       SSSSSSSSSSSS  OOOOOOOOOOOO
+                                              TT        SSSSSSSSSS   OOOOOOOOOOOO
+
+
+
+                   SSSSSSSSSS    2222222222        11                                                  AAAAAAAAAA
+                  SSSSSSSSSSSS  222222222222      111                                                 AAAAAAAAAAAA
+                  SS        SS  22        22     1111                                                 AA        AA
+                  SS                      22       11                                                 AA        AA
+                  SSS                     22       11                                                 AA        AA
+                   SSSSSSSSS             22        11                                                 AAAAAAAAAAAA
+                    SSSSSSSSS          22          11                                                 AAAAAAAAAAAA
+                           SSS       22            11                                                 AA        AA
+                            SS     22              11                                                 AA        AA
+                  SS        SS   22                11                                                 AA        AA
+                  SSSSSSSSSSSS  222222222222   1111111111                                             AA        AA
+                   SSSSSSSSSS   222222222222   1111111111                                             AA        AA
+
+
+****A  START  STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21  START  A****
+****A  START  STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21  START  A****
+****A  START  STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21  START  A****
+****A  START  STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21  START  A****
+CONSOLE VALUES ENTERED:
+    *NONE ENTERED*
+
+
+
+
+
+PARMLIB VALUES ENTERED:
+    USERMAX=40,                      /* MAXIMUM USERS                    */
+    RECONLIM=60,                     /* MAXIMUM DISCONNECT MINUTES       */
+    BUFRSIZE=252,                    /* VTIOC BUFFER SIZE                */
+    HIBFREXT=48000,                  /* MAX BUFFERS BEFORE SWAP OUT      */
+    LOBFREXT=24000,                  /* MIMIMUM BUFFERS BEFORE SWAP IN   */
+    MODE=NOBREAK,                    /* KEYBOARD LOCK OPTION             */
+    MODESW=YES,                      /* MODESWITCH FROM TERMINAL OPTION  */
+    CHNLEN=1,                        /* NO. OF RU'S PER CHAIN            */
+    SCRSIZE=1920                     /* DEFAULT SCREEN SIZE              */
+
+PARMLIB VALUES ACCEPTED:
+    USERMAX=40,RECONLIM=60,BUFRSIZE=252,HIBFREXT=48000,LOBFREXT=24000,
+    SCRSIZE=1920,CHNLEN=1,MODE=NOBREAK,MODESW=YES
+
+
+
+
+
+CURRENT TCAS PARAMETERS:
+    USERMAX=40,ACBPW=,RECONLIM=60,BUFRSIZE=252,HIBFREXT=48000,
+    LOBFREXT=24000,SCRSIZE=1920,CHNLEN=1,MODE=NOBREAK,MODESW=YES,
+    CONFTXT=YES                                                    TTTTTTTTTTTT   SSSSSSSSSS   OOOOOOOOOOOO
+                                                   TTTTTTTTTTTT  SSSSSSSSSSSS  OOOOOOOOOOOO
+                                                       TT       SS        SS  OO        OO
+                                                      TT       SS            OO        OO
+                                                     TT       SSS           OO        OO
+                                                    TT        SSSSSSSSS    OO        OO
+                                                   TT         SSSSSSSSS   OO        OO
+                                                  TT                SSS  OO        OO
+                                                 TT                 SS  OO        OO
+                                                TT       SS        SS  OO        OO
+                                               TT       SSSSSSSSSSSS  OOOOOOOOOOOO
+                                              TT        SSSSSSSSSS   OOOOOOOOOOOO
+
+
+
+                   SSSSSSSSSS    2222222222        11                                                  AAAAAAAAAA
+                  SSSSSSSSSSSS  222222222222      111                                                 AAAAAAAAAAAA
+                  SS        SS  22        22     1111                                                 AA        AA
+                  SS                      22       11                                                 AA        AA
+                  SSS                     22       11                                                 AA        AA
+                   SSSSSSSSS             22        11                                                 AAAAAAAAAAAA
+                    SSSSSSSSS          22          11                                                 AAAAAAAAAAAA
+                           SSS       22            11                                                 AA        AA
+                            SS     22              11                                                 AA        AA
+                  SS        SS   22                11                                                 AA        AA
+                  SSSSSSSSSSSS  222222222222   1111111111                                             AA        AA
+                   SSSSSSSSSS   222222222222   1111111111                                             AA        AA
+
+
+****A   END   STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21   END   A****
+****A   END   STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21   END   A****
+****A   END   STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21   END   A****
+****A   END   STC   21  TSO                             ROOM       12.28.58 PM 15 DEC 23  PRINTER1  SYS TK5R  STC   21   END   A****
+

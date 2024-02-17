@@ -1,0 +1,92 @@
+* LISTDSJ for MVS3.8J / Hercules
+* ==============================
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/LISTDSJ-for-MVS-3-8J
+*           Copyright (C) 2019-2021  Larry Belmontes, Jr.
+*
+*
+*  MM/DD/CCYY Version  Change Description
+*  ---------- -------  -----------------------------------------------
+*  04/02/2021 2.0.00   - Change software distribution packaging     
+*                        (HET and XMI)
+*                      - LISTDSJ Shared macros                          
+*                      - Externalize message processing (LDSJMSG)       
+*                      - Externalize ISPF Service processing (LDSJISP)  
+*                      - Misc documentation updates                     
+*                                                                       
+*  02/27/2021 1.0.40   - Support new variable, &SYSUPDATED              
+*                      - Correct TSO environment test      
+*                      - Add TSOB  parm keyword    
+*                      - Activate reason code 12 (VSAM not supported)
+*                      - Activate reason code 14 (not found UCB entry)  
+*                      - Activate reason code 7  (not found in internal 
+*                        table DVCLST)                                  
+*                      - Activate reason code 27 (no volser for DSN)    
+*                      - Activate reason code 3 (cannot process DSORG)  
+*                      - Add support of '?ABOUT' as first paramter      
+*                        for ABOUT information                          
+*                      - Various program documentation updates          
+*
+*  05/07/2020 1.0.30   - Change software distribution packaging and
+*                        installation procedure to use a Hercules
+*                        Emulated Tape (HET)
+*                      - No change to LISTDSJ program
+*                                                                       
+*  04/10/2020 1.0.20   - Correct TSB addr for TSO ENV testing           
+*                      - Minor corrections to LISTDSJ
+*                      - Minor updates to CLIST CLISTDIJ
+*                      - Updated message member
+*                                                                       
+*  09/30/2019 1.0.10   - Add comments for DF and DS keywords            
+*                      - Add keywords DIRECTORY and VOLUME              
+*                      - Changed list of values for &SYSUNITS to        
+*                        CYLINDER, TRACK, BLOCK, ABSOLUTE               
+*                      - Support new variable, &SYSALLOC,               
+*                      - Support USERID prefix for unquoted DSN         
+*                      - Changed date seperator and format defaults     
+*                        - Date Separator to dash    (-)                
+*                        - Date Format to CCYY_MM_DD (3)                
+*                      - Support FILE keyword   
+*                      - Support DL0 and DL1 keywords
+*                      - Enhance calling of IKJCT441 and ISPLINK        
+*                                                                       
+*  05/17/2019 1.0.01   - Add DS (Date Separator) keyword
+*                      - Add DF (Date Format layout) keyword
+*                      - Defaults can be customized at installation
+*                                                                       
+*  04/29/2019 1.0.00   - Initial version released to MVS 3.8J
+*                        hobbyist public domain
+*
+*
+*
+*  Prerequisite: User Modifications <PREREQS>
+*  ===================================================================
+*
+*     Two user-mods, ZP60014 and ZP60038, are REQUIRED to process
+*  CLIST symbolic variables via the IKJCT441 API on MVS 3.8J before
+*  using LISTDSJ.  Otherwise, LISTDSJ is rendered useless!
+*
+*     More information on the above user-mods can be obtained from
+*  the following website:
+*       http://www.prycroft6.com.au/vs2mods/
+*
+*     If the above user-mods are not installed, a system abend 806-4
+*  will occur when LISTDSJ is executed.  Additionally, an error
+*  message will be displayed on your TSO session screen:
+*      'LISTDSJ 4098 -Cannot link to IKJCT441'
+*
+*     Check your system to determine if one or both user-mods are
+*  required.  ZP60038 requires ZP60014.
+*
+*
+*     Although not a prerequisite, ISPLINK is called for table services
+*  to create PDS member lists via the LISTDSJ DLn option if ISPF is 
+*  installed on MVS38J such as ISPF 2.0 (Wally Mclaughlin's product).  
+*  If a member directory list option (DL0 or DL1) is requested
+*  and MVS38J does not have ISPF installed, the option is ignored.
+*  However, MVS38J will report a system abend 806-4 for program
+*  ISPLINK when the LISTDSJ request is processed.  This is by design.
+*
+*

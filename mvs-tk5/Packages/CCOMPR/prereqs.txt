@@ -1,0 +1,31 @@
+* CCOMPR for MVS3.8J / Hercules                                               
+* =============================                                               
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/CCompare-in-MVS38J
+*           Copyright (C) 2020  Larry Belmontes, Jr.
+*
+*  MM/DD/CCYY Version  Name / Description
+*  ---------- -------  -----------------------------------------------
+*  08/10/2020 0.9.00   Larry Belmontes Jr.  
+*                      - Initial version released to MVS 3.8J
+*                        hobbyist public domain
+*
+*
+*  Prerequisite: User Modifications <PREREQS>
+*  ===================================================================
+*
+*     No specific user modifications are necessary.                     
+*
+*     COMPARE and PRINTOFF CPs are available on MVS38J TK3 and TK4- 
+*  systems.  Also, various versions (of COMPARE and PRINTOFF) are 
+*  available from CBTTAPE.ORG (www.cbttape.org). 
+*
+*     If the above CPs are not installed, an error message is 
+*  displayed accordingly.                                      
+*
+*     ISPF v2.1 (Wally Mclaughlin's product) must be installed on
+*  MVS38J.                                 
+*
+*

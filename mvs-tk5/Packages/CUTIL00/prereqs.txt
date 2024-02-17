@@ -1,0 +1,53 @@
+* CUTIL00 for MVS3.8J / Hercules
+* ==============================
+*
+*
+*  Author: Larry Belmontes Jr.
+*          https://ShareABitOfIT.net/CUTIL00-for-mvs-3-8j/
+*          Copyright (C) 2020-2021 Larry Belmontes, Jr.
+*
+*
+*  MM/DD/CCYY Version  Change Description
+*  ---------- -------  -----------------------------------------------
+*  10/05/2021 1.1.05   - Add new functions LEN SLEN OVERLAY UTDSN TRUNC
+*                      - Correction to REPLACE function
+*                      - Load CUTILTBL and call via BALR
+*                      - Miscellaneous documentation and program updates
+*
+*  04/10/2021 1.1.00   - Add new functions GET1 PUT1 MCAL
+*                      - Externalize constants and tables to new program
+*                      - Miscellaneous documentation and program updates
+*
+*  05/03/2020 1.0.10   - Change software distribution packaging and
+*                        installation procedure to use Hercules 
+*                        Emulated Tape (HET)
+*                      - No change to CUTIL00 program
+*
+*  04/20/2020 1.0.01   - Correction to Step ADDHELP in $inst01.JCL to
+*                        load two HELP members instead of one
+*                      - Thanks to Tom Armstrong!!
+*
+*  03/20/2020 1.0.00   Initial version released to MVS 3.8J
+*                      hobbyist public domain
+*
+*
+*  Prerequisite: User Modifications             
+*  ===================================================================
+*
+*     Two user-mods, ZP60014 and ZP60038, are REQUIRED to process
+*  CLIST symbolic variables via the IKJCT441 API on MVS 3.8J before
+*  using CUTIL00.  Otherwise, CUTIL00 is rendered useless!
+*
+*     More information on the above user-mods can be obtained from
+*  the following website:
+*       http://www.prycroft6.com.au/vs2mods/
+*
+*     If the above user-mods are not installed, a system abend 
+*  806-4 will occur when CUTIL00 is executed.  Additionally, an
+*  error message will be displayed on your TSO session screen:
+*      'CUTIL00 4098 -Cannot link to IKJCT441'
+*
+*     Check your system to determine if one or both user-mods are
+*  required.  ZP60038 requires ZP60014.
+*
+*

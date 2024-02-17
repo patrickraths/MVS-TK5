@@ -1,0 +1,23 @@
+* CALNDR2 for MVS3.8J / Hercules                                               
+* ==============================                                               
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/CALNDR2-in-MVS38J
+*           Copyright (C) 2022  Larry Belmontes, Jr.
+*
+*  MM/DD/CCYY Version  Name / Description
+*  ---------- -------  -----------------------------------------------
+*  03/20/2022 0.9.00   Larry Belmontes Jr.  
+*                      - Initial version released to MVS 3.8J
+*                        hobbyist public domain
+*
+*
+*  Prerequisite: User Modifications             
+*  ===================================================================
+*
+*     No user-mods are necessary.
+*
+*     ISPF v2.1 (Wally Mclaughlin's product) or greater must be 
+*  installed on MVS38J.                                 
+*

@@ -1,0 +1,34 @@
+* DSCOPY for MVS3.8J / Hercules                                               
+* =============================                                               
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/DSCOPY-in-MVS38J
+*           Copyright (C) 2021  Larry Belmontes, Jr.
+*
+*  MM/DD/CCYY Version  Name / Description
+*  ---------- -------  -----------------------------------------------
+*  04/20/2021 0.9.00   Larry Belmontes Jr.  
+*                      - Initial version released to MVS 3.8J
+*                        hobbyist public domain
+*
+*
+*  Prerequisite: User Modifications             
+*  ===================================================================
+*
+*     Two user-mods, ZP60014 and ZP60038, are REQUIRED to process
+*  CLIST symbolic variables via the IKJCT441 API on MVS 3.8J before
+*  using LISTDSJ and CUTIL00.  Otherwise, both CPs will function but will
+*  NOT create CLIST variables.
+*
+*     More information on the above user-mods can be obtained from
+*  the following website:
+*       http://www.prycroft6.com.au/vs2mods/
+*
+*     Check your system to determine if one or both user-mods are
+*  required.  ZP60038 requires ZP60014.
+*     No user-mods are necessary.
+*
+*     ISPF v2.1 (Wally Mclaughlin's product) or greater must be 
+*  installed on MVS38J including any user-mods and REVIEW version.
+*

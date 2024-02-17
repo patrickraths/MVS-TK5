@@ -1,0 +1,74 @@
+#
+# Define services
+#
+services:
+  tk5:
+    image: praths/mvs-tk5:latest
+    container_name: mvs-tk5
+    stdin_open: true          # docker run -i
+    tty: true                 # docker run -t
+    cap_add: 
+      - SYS_NICE
+    network_mode: bridge
+    ports: 
+      - 3270:3270
+      - 8038:8038
+    volumes:
+      - dasd.usr:/opt/tk5/dasd.usr
+      - log:/opt/tk5/log
+      - tape:/opt/tk5/tape
+      - prt:/opt/tk5/prt
+      - pch:/opt/tk5/pch
+    restart: no
+
+volumes:
+  #
+  # System DASD
+  #
+  dasd.sys:
+  #
+  # User DASD
+  #
+  dasd.usr:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/dasd.usr'
+  #
+  # System Logs
+  #
+  log:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/log'
+  #
+  # Tape Devices
+  #
+  tape:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/tape'
+  #
+  # Printers
+  #
+  prt:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/prt'
+  #
+  # Card Readers
+  #
+  pch:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/pch'
+

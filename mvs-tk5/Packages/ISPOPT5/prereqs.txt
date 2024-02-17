@@ -1,0 +1,30 @@
+* ISPOPT5 for MVS3.8J / Hercules
+* ============================== 
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/ISPOPT5-in-MVS38J
+*           Copyright (C) 2021  Larry Belmontes, Jr.
+*
+*  MM/DD/CCYY Version  Name / Description
+*  ---------- -------  -----------------------------------------------
+*  10/31/2021 0.9.00   Larry Belmontes Jr.  
+*                      - Initial version released to MVS 3.8J
+*                        hobbyist public domain
+*
+*
+*  Prerequisite: User Modifications                  
+*  ===================================================================
+*
+*     No specific user modifications are necessary.                     
+*
+*     SYSCPK, a single DASD volume containing compilers and tools,  
+*  is available on MVS38J TK3 and TK4- systems. SYSCPK is used to resolve
+*  all compilers used by this ISPF add-on.                               
+*  More information at:                                             
+*  http://www.jaymoseley.com/hercules/compilers/syscpk.htm
+*
+*     ISPF v2.1 (Wally Mclaughlin's product) must be installed on
+*  MVS38J.                                 
+*
+*

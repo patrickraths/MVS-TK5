@@ -1,0 +1,42 @@
+* CLGLST for MVS3.8J / Hercules                                               
+* =============================                                               
+*
+*
+*  Author:  Larry Belmontes Jr.
+*           https://ShareABitofIT.net/CLGLST-in-MVS38J
+*           Copyright (C) 2019-2022  Larry Belmontes, Jr.
+*
+*  MM/DD/CCYY Version  Name / Description                                       
+*  ---------- -------  -----------------------------------------------          
+*  02/10/2022 0.9.00   Larry Belmontes Jr.                                      
+*                      - Initial version released to MVS 3.8J                   
+*                        hobbyist public domain
+*                                                                               
+*  09/11/2019 0.5.00   Larry Belmontes Jr.
+*                      Initial prototyping and development
+*                      w ISPF 2.x
+*                                                                               
+*
+*  Prerequisite: User Modifications               
+*  ===================================================================
+*
+*     ISPF v2.2+ (ISPF-like product from Wally Mclaughlin) is necessary
+*  to use this software distribution under MVS 3.8J TSO including
+*  associated user-mods per ISPF Installation Pre-reqs.
+*
+*     Two user-mods, ZP60014 and ZP60038, are REQUIRED to process
+*  CLIST symbolic variables via the IKJCT441 API on MVS 3.8J before
+*  using this software distribution.
+*
+*     More information on the above user-mods can be obtained from
+*  the following website:
+*       http://www.prycroft6.com.au/vs2mods/
+*
+*     Check your system to determine if one or both user-mods are
+*  required.  ZP60038 requires ZP60014.
+*
+*     Several other components are pre-requisites.  See README
+*  file for a complete list of required and optional software.    
+*
+*
+*
