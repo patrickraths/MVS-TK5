@@ -105,3 +105,7 @@ INCLUDE conf/tk5_updates.cnf
 # local updates
 #
 ${LOCALCNF:=INCLUDE conf/local.cnf}
+#
+# Add-on DASD
+#
+INCLUDE dasd.usr/usr_dasd.cnf
