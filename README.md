@@ -41,19 +41,32 @@ To run TK4- in a container requires that the container is started with the corre
       docker run --name tk4.rob -it --mount src=tk4-dasd,target=/opt/tk4/dasd.usr -p 3270:3270 -p 8038:8038 praths/tk4:rob
       ```
    Loading of TK4- is completed when the following is shown on the Hercules console:<br>
-   <img width="570" alt="TK4 Console" src="https://user-images.githubusercontent.com/43680256/227548975-a5a90c92-13dc-48e7-93d6-0ab0f453cb63.png">
-## Customizing TK4-
-### Changing the Timezone
-To change the timezone modify **SYS1.PARMLIB(PARMTZ)**<br><br>
-Syntax:<br>
-D,HH[.MM[.SS]]<br><br>
-Parameters:<br>
-"E" or "W" to specify a time zone east or west or Greenwich Mean Time (GMT)
-HH specifies the number of hours deviation from GMT (00-12)
-MM specifies the number of minutes. Optional parameter. (00-59)
-SS specifies the number of seconds. Optional parameter (00-59)
+   <img width="500" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/235f3083-788c-4762-a850-c998ae42b465">
 
-<img width="1120" alt="image" src="https://user-images.githubusercontent.com/43680256/228867399-c9d08e02-9851-4f09-939c-f7aff5a65d82.png">
+### Login into MVS-TK5
+- Connect to port 3270 on your local host using an 3270 Emulator
+- Logon using **HERC02** as user and **CUL8TR** as password
+  <br><img width="250" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/f8d7774a-a701-45b3-9bdb-0cbd6fc3871d">
+  <img width="250" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/34dfc84d-5513-4b3d-b059-ad9182ffca49">
+  <img width="250" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/367233c8-371a-4921-adf2-f93767a78532">
+- Accept the welcome messages until you see the ISPF Primary Menu
+  <br><img width="500" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/6be9b943-c498-45d1-906a-02a09afa0f37">
+
+## Customizing TK5
+### Changing the Timezone
+- Select **2** (Edit) from the ISPF primary option menu
+- Select **SYS1.PARMLIB(PARMTZ)**
+  <br><img width="350" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/454e7a68-9897-4c74-8cc6-5701ff9cb890">
+- Change the Time Zone setting<br>
+  Syntax:<br>
+  D,HH[.MM[.SS]]<br><br>
+  Parameters:<br>
+  "E" or "W" to specify a time zone east or west or Greenwich Mean Time (GMT)
+  HH specifies the number of hours deviation from GMT (00-12)
+  MM specifies the number of minutes. Optional parameter. (00-59)
+  SS specifies the number of seconds. Optional parameter (00-59)
+
+  <img width="1120" alt="image" src="https://user-images.githubusercontent.com/43680256/228867399-c9d08e02-9851-4f09-939c-f7aff5a65d82.png">
 
 ### Enabling the CBT Catalogue
 To make the CBT Volumes accessibles submit job **SYS1.SETUP.CNTL(MVS0170) [issue **sub** on the Command line when viewing/editing the dataset]. This connects the SYS1.UCAT.CBT user catalog to the master catalog and defines the CBT, CBTCOV, CBT072, CBT129, CBT249, CBT429 HLQ as aliases.
