@@ -1,47 +1,39 @@
-# MVS TK4- running in Docker container
-## Building and running TK4 as container
+# MVS 3.8j TK5 Update 2 as docker container
+MVS TK5 is an implementation of OS/VS2 MVS Release 3.8J. The successors to MVS 3.8, MVS/XA, MVS/ESA, OS/390 and z/OS all demonstrate their OS/VS MVS 3.8 heritage. 
+
+## Building and running MVS-TK5 as container
 Building the container is controlled through the Dockerfile found in the root directory of this repository. T
 ### Building blocks
 - Dockerized version of SDL-Hercules-390 Version 4.5 (https://github.com/patrickraths/docker-SDL-Hercules-390) used as base image
-- TK4 Update 8
-### Changes to TK4 Update 8
-The following changes were applied to the default TK4- Update 8 configuration as available on https://wotho.ethz.ch/tk4-/
+- [TK5 Update 2](https://www.prince-webdesign.nl/tk5)
+### Changes to TK5 Update 2
+The following changes were applied to the default TK5 Update 2 configuration
 - Remove embedded Hercules
 - Remove all Windows related startup files
 - Remove support to run Hercules in unattended (daemon) mode
 - Modifed startup files
 - Added support for user defined DASD using docker volume
-### Building the TK4 Docker Image
+### Building the MVS-TK5 Docker Image
 - Building the Docker image
 ```
-docker build -t tk4:latest .
+docker build -t mvs-tk5:latest .
 ```
-## Running TK4 as container
-When running the container, hercules, the mainframe System/370 emulator, will be started, configured to run MVS 3.8j, and an IPL of TK4- is performed. Once MVS has started, it can be accessed using a TN3270 emulator using port 3270. The Hercules console can be access by connecting to <http://localhost:8038> using any web browser.
+## Running TK5 as container
+When running the container, hercules, the mainframe System/370 emulator, will be started, configured to run MVS 3.8j, and an IPL of TK5 is performed. Once MVS has started, it can be accessed using a TN3270 emulator using port 3270. The Hercules console can be access by connecting to <http://localhost:8038> using any web browser.
 
-It is recommended to create separate DASDs (**D**irect **A**ccess **S**torage **D**evice) to store data on MVS that is not part of the standard TK4- configuration. While by default all DASD are stored in the directory /opt/tk4/dasd, user created DASD should be placed in **/opt/tk4/dasd.usr** which is configured as docker volume to allow for persistent storage. 
+```
+docker run --name mvs-tk5 -it -p 3270:3270 -p 8038:8038 --cap-add=sys_nice --mount src=mvs-tk5-dasd.usr,target=/opt/tk5/dasd.usr mvs-tk5
+```
+| Parameters | Description |
+| :--- | :-- |
+| --name \<name\>  | Name of the container to be created, e.g. **mvs-tk5** |
+| -it | Attach interactive terminal to view log output | 
+| -p \<host port\>:\<container port\> | Maps ports between host and container<br>Port 3270: Telnet 3270 to access MVS<br>Port 8038 to access the Hecules console |
+| --cap-add=sys_nice | Grants the container the `CAP_SYS_NICE` capability, which allows the container to raise process nice values, set real-time scheduling policies, set CPU affinity, and other operations. |
+| --mount src=\<volume\>,target=/opt/tk5/dasd.usr | Uses the volume specified by \<volume\> and maps it to the containers file system as specified by target=<br>Creates a volume, e.g. **mvs-tk5_dasd.usr** and maps it to the containers internal file system as **/opt/tk5/dasd.usr** to mount additional DASD[^1] that are not part of the system configuration in a persistent storage.<br>By default all DASD are stored in the directory /opt/tk5/dasd, user created DASD should be placed in **/opt/tk5/dasd.usr**<br>Details on how to create additional DASD and configure MVS to use them can be found in the section **Customizing MVS=TK5** |
 
-Details on how to create additional DASD and configure MVS to use them can be found in the section **Customizing TK4-**
-
-To run TK4- in a container requires that the container is started with the correct options:<br>
-*--name tk4* assigns the name **tk4** to the container. If omitted, docker will be assign a random name. For the purpose of this documentation, the container is referred to as **tk4**<br>
-*--it* runs the container interactive and assigns a terminal (tty). This allows to access the hercules console not only through the web interface but directly in a terminal session. If this option is omitted, TK4- will be started an the hercules console can be accessed through the web interface on <http://localhost:8038>
-*--mount src=tk4-dasd,target=/opt/tk4/dasd.usr* creates or connects an existing volume named **tk4-dasd** and mounts it as **/opt/tk4/dasd.usr** inside the container.<br>
-*-p 3270:3270[^1]* exports port 3270 of the container on the host using the same port number<br>
-*-p 8038:8038* exports port 8038 of the container on the host using the same port number<br>
-
-   Note:<br>
-   By reassigning ports 3270, respectively 8038 to different ports on the host it would be possible to run multiple instances of TK4- in parallel, each of which can be accessed using a different port number. Should another container already be using any of these port numbers it cannot be launched using the default port numbers.<br>
-   - Default TK4 configuration
-      ```
-      docker run --name tk4 -it --mount src=tk4-dasd,target=/opt/tk4/dasd.usr -p 3270:3270 -p 8038:8038 praths/tk4
-      ```
-   - Rob Prins' enhanced TK4 edition
-      ```
-      docker run --name tk4.rob -it --mount src=tk4-dasd,target=/opt/tk4/dasd.usr -p 3270:3270 -p 8038:8038 praths/tk4:rob
-      ```
-   Loading of TK4- is completed when the following is shown on the Hercules console:<br>
-   <img width="500" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/235f3083-788c-4762-a850-c998ae42b465">
+Loading of MVS-TK5 is completed when the following is shown on the Hercules console:<br>
+<img width="500" alt="image" src="https://github.com/patrickraths/MVS-TK5/assets/43680256/235f3083-788c-4762-a850-c998ae42b465">
 
 ### Login into MVS-TK5
 - Connect to port 3270 on your local host using an 3270 Emulator
@@ -76,13 +68,13 @@ Change MSGCLASS from 'A' to 'H' so that the result of the job can be viewed
 
 <img width="585" alt="image" src="https://user-images.githubusercontent.com/43680256/229275001-82b5c4a7-8b9e-4284-83f3-9deddf85ce1c.png">
 
-### DASD
-There are different DASD types that vary in capacity; typical models as 3330, 3340, 3350, 3380, 3390, etc. However, TK4- does not support DASD models later than than 3350. In this example a DASD of type 3350 is created which provides a capacity of approximately 300MB.
+## Adding User DASD
+There are different DASD types that vary in capacity; typical models as 3330, 3340, 3350, 3380, 3390, etc. 
 
-MVS communicates to DASD through addresses. TK4- has assigned the following address ranges for DASD devices:
+MVS communicates to DASD through addresses. MVS-TK5 has assigned the following address ranges for DASD devices:
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/43680256/229289077-eb87138d-e61f-4190-968b-8ba2e0680f48.png">
 
-In TK4- the following addresses for DASD Model 3350 are in use:
+In MVS-TK5 the following addresses for DASD Model 3350 are in use:
 | Address | Volume |
 | :------ | :----- |
 | 0140 | WORK00 |
@@ -93,26 +85,26 @@ In TK4- the following addresses for DASD Model 3350 are in use:
 | 0248 | MVSDLB |
 | 0340-0342 | CBT000, CBT001, CBT002 |
 | 0343 | CBTCAT |
-For the actual use of addresses refer to the **conf/tk4-.cnf** file
+For the actual use of addresses refer to the **conf/tk5-.cnf** file
 
-#### Create and configure a user DASD
+### Create and configure a user DASD
 1. Create the DASD<br>
    For our purpose we want to create the following volume to store user data:
    | Address | Model | Volume |
    | :------ | :---- | :----- |
    | 034A | 3350 | USR000 |
    
-   To create the DASD image hercules provides a utility called **dasdinit**. The terminal console of the container can be accessed either by using the Docker Dashboard or by launching a terminal session using `docker exec -it tk4 /bin/bash` and use the following command to create the DASD.    
+   To create the DASD image hercules provides a utility called **dasdinit**. The terminal console of the container can be accessed either by using the Docker Dashboard or by launching a terminal session using `docker exec -it mvs-tk5 /bin/bash` and use the following command to create the DASD.    
    ```
-   dasdinit -z -a /opt/tk4/dasd.usr/usr000.34a 3350 USR000
+   dasdinit -z -a /opt/tk5/dasd.usr/usr000.34a 3350 USR000
    ````
    This creates a new DASD of Type 3350 with the Volume name **USR000**
    >HHC02499I Hercules utility dasdinit - DASD image file creation program - version 4.5.0.10830-SDL-g58578601-modified<br>
    >HHC01414I (C) Copyright 1999-2022 by Roger Bowler, Jan Jaeger, and others<br>
    >HHC01417I ** The SoftDevLabs version of Hercules **<br>
    >HHC01415I Build date: Mar 28 2023 at 10:51:26<br>
-   >HHC00462I 0:0000 CKD file /opt/tk4/dasd.usr/usr000.34a: creating 3350 volume USR000: 560 cyls, 30 trks/cyl, 19456 bytes/track<br>
-   >HHC00460I 0:0000 CKD file /opt/tk4/dasd.usr/usr000.34a: 560 cylinders successfully written<br>
+   >HHC00462I 0:0000 CKD file /opt/tk5/dasd.usr/usr000.34a: creating 3350 volume USR000: 560 cyls, 30 trks/cyl, 19456 bytes/track<br>
+   >HHC00460I 0:0000 CKD file /opt/tk5/dasd.usr/usr000.34a: 560 cylinders successfully written<br>
    >HHC02423I DASD operation completed<br>
 2. Attach DASD<br>
    In order for MVS to communicate with the DASD it must be attached. To attach the DASD at address 34A in the running configuration use the following command in the Hercules console:
@@ -173,7 +165,7 @@ For the actual use of addresses refer to the **conf/tk4-.cnf** file
      ```
      <img width="636" alt="image" src="https://user-images.githubusercontent.com/43680256/229294781-e78fd5d8-e0f8-4d2e-8155-c4d65568ddcf.png">
    - Edit Hercules Configuration<br>
-     Modify the file usr_dasd.cnf in the folder /opt/tk4/dasd.usr to automatically attach the newly created dasd at address 34a. This file is referenced as include in the TK4- base configuration file (/opt/tk4/conf/tk4-.cnf)
+     Modify the file usr_dasd.cnf in the folder /opt/tk5/dasd.usr to automatically attach the newly created dasd at address 34a. This file is referenced as include in the MVS-TK5 base configuration file (/opt/tk5/conf/tk5-.cnf)
 
        ```
       #
@@ -184,7 +176,7 @@ For the actual use of addresses refer to the **conf/tk4-.cnf** file
 
       To modify the file use the Docker Dashboard or use the following command to edit it
       ```
-      docker exec -it tk4 nano /opt/tk4/dasd.usr/usr_dasd.cnf
+      docker exec -it mvs-tk5 nano /opt/tk5/dasd.usr/usr_dasd.cnf
       ```
 6. Set Up User Catalogs<br>
    Generally, when adding new storage space to the system, it is also a good time to think about how that storage space will integrate with the catalog structure in place for the system.
@@ -230,7 +222,7 @@ For the actual use of addresses refer to the **conf/tk4-.cnf** file
 When a volume is brought into the system from a prior functioning system that has its own User Catalog on the volume, the volume must be attached, added to the MVS configuration, and the catalog connected to the master catalog
 
 1. Copy DASD file<br>
-   Copy the DASD file to /opt/tk4/dasd.usr directory, respectively run docker using `docker run --name tk4 -it --mount src=tk4-dasd,target=/opt/tk4/dasd.usr -p 3270:3270 -p 8038:8038 tk4:latest` with a docker volume that already contains the DASD files
+   Copy the DASD file to /opt/tk5/dasd.usr directory, respectively run docker using `docker run --name mvs-tk5 -it --mount src=mvs-tk5_dasd.usr,target=/opt/tk5/dasd.usr -p 3270:3270 -p 8038:8038 mvs-tk5:latest` with a docker volume that already contains the DASD files
    
 2. Attach the DASD file mount the volume
    - Attach DASD & mount it
@@ -249,7 +241,7 @@ When a volume is brought into the system from a prior functioning system that ha
      <img width="636" alt="image" src="https://user-images.githubusercontent.com/43680256/229294781-e78fd5d8-e0f8-4d2e-8155-c4d65568ddcf.png">
 
    - Edit Hercules Configuration<br>
-     Modify the file /opt/tk4/dasd.usr/usr_dasd.cnf to automatically attach the newly created dasd at address 34a. This file is referenced as include in the TK4- base configuration file (/opt/tk4/conf/tk4-.cnf)
+     Modify the file /opt/tk5/dasd.usr/usr_dasd.cnf to automatically attach the newly created dasd at address 34a. This file is referenced as include in the TK5- base configuration file (/opt/tk5/conf/tk5-.cnf)
      ```
      #
      # User Added DASD
@@ -280,3 +272,89 @@ When a volume is brought into the system from a prior functioning system that ha
      DEFINE ALIAS(NAME(PRATHS) RELATE(UCUSR000))                         
    //
    ```
+
+## Running TK5 as a docker service using Docker Compose
+The following is an example of the compose.yaml file to run mvs-tk5. In addition to the volume for user defined DASD additional volumes are being used for the following devices for easier access and to to minimise run-time changes to the container.
+| Device | Description | Location in TK5 file system |
+| :--- | :--- | :--- |
+| User DASD | User defined DASD as described above | /opt/tk5/dasd.usr |
+| Logs | TK5 Log files | /opt/tk5/log |
+| Tape | Tapes | /opt/tk5/tape |
+| Printer | Printer spool files | /opt/tk5/prt |
+| Punch | Card Reader | /opt/tk5/pch |
+
+```
+#
+# Define services
+#
+services:
+  tk5:
+    image: praths/mvs-tk5:latest
+    container_name: mvs-tk5
+    stdin_open: true          # docker run -i
+    tty: true                 # docker run -t
+    cap_add: 
+      - SYS_NICE
+    network_mode: bridge
+    ports: 
+      - 3270:3270
+      - 8038:8038
+    volumes:
+      - dasd.usr:/opt/tk5/dasd.usr
+      - log:/opt/tk5/log
+      - tape:/opt/tk5/tape
+      - prt:/opt/tk5/prt
+      - pch:/opt/tk5/pch
+    restart: no
+
+volumes:
+  #
+  # System DASD
+  #
+  dasd.sys:
+  #
+  # User DASD
+  #
+  dasd.usr:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/user/tk5/dasd.usr'
+  #
+  # System Logs
+  #
+  log:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/user/tk5/log'
+  #
+  # Tape Devices
+  #
+  tape:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/user/tk5/tape'
+  #
+  # Printers
+  #
+  prt:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/user/tk5/prt'
+  #
+  # Card Readers
+  #
+  pch:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/praths/Documents/tk5/pch'
+```
