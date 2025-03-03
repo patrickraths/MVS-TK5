@@ -1,12 +1,12 @@
-# MVS 3.8j TK5 Update 2 as docker container
-MVS TK5 is an implementation of OS/VS2 MVS Release 3.8J. The successors to MVS 3.8, MVS/XA, MVS/ESA, OS/390 and z/OS all demonstrate their OS/VS MVS 3.8 heritage. 
+# MVS 3.8j TK5 Update 4 as docker container
+MVS TK5 is an implementation of OS/VS2 MVS Release 3.8J. The successors to MVS 3.8, MVS/XA, MVS/ESA, OS/390 and z/OS all demonstrate their OS/VS MVS 3.8 heritage.
 
 ## Building and running MVS-TK5 as container
 Building the container is controlled through the Dockerfile found in the root directory of this repository. T
 ### Building blocks
 - Dockerized version of SDL-Hercules-390 Version 4.5 (https://github.com/patrickraths/docker-SDL-Hercules-390) used as base image
 - [TK5 Update 2](https://www.prince-webdesign.nl/tk5)
-### Changes to TK5 Update 2
+### Changes to TK5 Update 4
 The following changes were applied to the default TK5 Update 2 configuration
 - Remove embedded Hercules
 - Remove all Windows related startup files
@@ -27,7 +27,7 @@ docker run --name mvs-tk5 -it -p 3270:3270 -p 8038:8038 --cap-add=sys_nice --mou
 | Parameters | Description |
 | :--- | :-- |
 | --name \<name\>  | Name of the container to be created, e.g. **mvs-tk5** |
-| -it | Attach interactive terminal to view log output | 
+| -it | Attach interactive terminal to view log output |
 | -p \<host port\>:\<container port\> | Maps ports between host and container<br>Port 3270: Telnet 3270 to access MVS<br>Port 8038 to access the Hecules console |
 | --cap-add=sys_nice | Grants the container the `CAP_SYS_NICE` capability, which allows the container to raise process nice values, set real-time scheduling policies, set CPU affinity, and other operations. |
 | --mount src=\<volume\>,target=/opt/tk5/dasd.usr | Uses the volume specified by \<volume\> and maps it to the containers file system as specified by target=<br>Creates a volume, e.g. **mvs-tk5_dasd.usr** and maps it to the containers internal file system as **/opt/tk5/dasd.usr** to mount additional DASD[^1] that are not part of the system configuration in a persistent storage.<br>By default all DASD are stored in the directory /opt/tk5/dasd, user created DASD should be placed in **/opt/tk5/dasd.usr**<br>Details on how to create additional DASD and configure MVS to use them can be found in the section **Customizing MVS=TK5** |
@@ -69,7 +69,7 @@ Change MSGCLASS from 'A' to 'H' so that the result of the job can be viewed
 <img width="585" alt="image" src="https://user-images.githubusercontent.com/43680256/229275001-82b5c4a7-8b9e-4284-83f3-9deddf85ce1c.png">
 
 ## Adding User DASD
-There are different DASD types that vary in capacity; typical models as 3330, 3340, 3350, 3380, 3390, etc. 
+There are different DASD types that vary in capacity; typical models as 3330, 3340, 3350, 3380, 3390, etc.
 
 MVS communicates to DASD through addresses. MVS-TK5 has assigned the following address ranges for DASD devices:
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/43680256/229289077-eb87138d-e61f-4190-968b-8ba2e0680f48.png">
@@ -93,8 +93,8 @@ For the actual use of addresses refer to the **conf/tk5-.cnf** file
    | Address | Model | Volume |
    | :------ | :---- | :----- |
    | 034A | 3350 | USR000 |
-   
-   To create the DASD image hercules provides a utility called **dasdinit**. The terminal console of the container can be accessed either by using the Docker Dashboard or by launching a terminal session using `docker exec -it mvs-tk5 /bin/bash` and use the following command to create the DASD.    
+
+   To create the DASD image hercules provides a utility called **dasdinit**. The terminal console of the container can be accessed either by using the Docker Dashboard or by launching a terminal session using `docker exec -it mvs-tk5 /bin/bash` and use the following command to create the DASD.
    ```
    dasdinit -z -a /opt/tk5/dasd.usr/usr000.34a 3350 USR000
    ````
@@ -111,39 +111,39 @@ For the actual use of addresses refer to the **conf/tk5-.cnf** file
    ```
    attach 034a 3350 dasd.usr/usr000.34a
    ```
-   <img width="569" alt="image" src="https://user-images.githubusercontent.com/43680256/229291338-b4438109-14fa-4a1e-a3f8-041459a4ef02.png">   
+   <img width="569" alt="image" src="https://user-images.githubusercontent.com/43680256/229291338-b4438109-14fa-4a1e-a3f8-041459a4ef02.png">
 3. Initalize the DASD Image for use by MVS
    Although the dasdinit program creates the raw DASD image, MVS requires additional information that is not written by dasdinit. The following JCL initalizes newly created DASD as Volume **USR000** using address **34A**, and assigns 1 Cylinder (30 Tracks) for the VTOC.
-   
+
    ```
-   //INITDASD JOB (INITDASD),                                            
-   //             'Initialize DASD',                                     
-   //             CLASS=A,                                               
-   //             MSGCLASS=H,                                            
-   //             MSGLEVEL=(1,1)                                         
+   //INITDASD JOB (INITDASD),
+   //             'Initialize DASD',
+   //             CLASS=A,
+   //             MSGCLASS=H,
+   //             MSGLEVEL=(1,1)
    //********************************************************************
-   //*                                                                   
-   //* Name: (DEFCAT)                                                    
-   //*                                                                   
-   //* Desc: Initializes a DASD for use with MVS                         
-   //*                                                                   
+   //*
+   //* Name: (DEFCAT)
+   //*
+   //* Desc: Initializes a DASD for use with MVS
+   //*
    //********************************************************************
-   //STEP1    EXEC PGM=ICKDSF,REGION=4096K                               
-   //SYSPRINT DD   SYSOUT=*                                              
-   //SYSIN    DD   *                                                     
-     INIT UNITADDRESS(34A) NOVERIFY VOLID(USR000) OWNER(HERCULES) -      
-                  VTOC(0,1,30)                                           
-   //                                                                    
+   //STEP1    EXEC PGM=ICKDSF,REGION=4096K
+   //SYSPRINT DD   SYSOUT=*
+   //SYSIN    DD   *
+     INIT UNITADDRESS(34A) NOVERIFY VOLID(USR000) OWNER(HERCULES) -
+                  VTOC(0,1,30)
+   //
    ```
    You will be asked to confirm that you actually want to initialize the volume at the address specified:
    >*00 ICK003D REPLY U TO ALTER VOLUME 34A CONTENTS, ELSE T
 
    The reply of U allows the initialization to proceed.  There will be a number of informational messages printed in the SYSPRINT output during the executing of ICKDSF.  The most important thing to verify is that the return code for the job is 0000.
-   
+
    <img width="564" alt="image" src="https://user-images.githubusercontent.com/43680256/229292813-f8b2b471-e8b8-4bad-ae3c-8aabebefaf3b.png">
 
 4. Set the volume online and mount it with the appropriate storage use class<br>
-   After the volume is initialized, it must be placed online before MVS will be able to allocate the volume to allow jobs to create datasets on it.  On the MVS console issue the command 
+   After the volume is initialized, it must be placed online before MVS will be able to allocate the volume to allow jobs to create datasets on it.  On the MVS console issue the command
    ```
    /v <address>,online`
    ```
@@ -154,14 +154,14 @@ For the actual use of addresses refer to the **conf/tk5-.cnf** file
    /m 34a,vol=(sl,usr000),use=private
    ```
    <img width="563" alt="image" src="https://user-images.githubusercontent.com/43680256/229294052-0bf92643-5ae9-4a40-b6b0-e710d8375f1d.png">
-   
+
    By using use=private new datasets will be created on this volume only if the user (via JCL or the TSO ALLOCATE command) specifies the volume serial of this disk volume.
-   
+
 5. Add the new volume to the MVS & Hercules configuration so it will be mounted automatically
    - Edit MVS Configuration<br>
      By modifying **SYS1.PARMLIB(VATLST00)** MVS will be instructed to automatically mount the volume, if accessible, and assign storage class 2 (Private)
      ```
-     USR000,0,2,3350    ,N                  User Volume 1 
+     USR000,0,2,3350    ,N                  User Volume 1
      ```
      <img width="636" alt="image" src="https://user-images.githubusercontent.com/43680256/229294781-e78fd5d8-e0f8-4d2e-8155-c4d65568ddcf.png">
    - Edit Hercules Configuration<br>
@@ -182,48 +182,48 @@ For the actual use of addresses refer to the **conf/tk5-.cnf** file
    Generally, when adding new storage space to the system, it is also a good time to think about how that storage space will integrate with the catalog structure in place for the system.
 
    During System Generation, a VSAM Master Catalog was created. It resides on MVSRES and the dataset name of the catalog itself is SYS1.VSAM.MASTER.CATALOG. Although any new datasets you created can be catalogued in the Master Catalog, it is not considered a good practice and would undoubtedly not be allowed in any real world shop.
-   
+
    To create a User catalog called **UCUSR000** that resides on the new volume **USR000** that will be connected to the master catalog, submit the following JCL:
    ```
-   //DEFCAT   JOB (DEFCAT),                                              
-   //             'Define User Catalog',                                 
-   //             CLASS=A,                                               
-   //             MSGCLASS=H,                                            
-   //             MSGLEVEL=(1,1)                                         
+   //DEFCAT   JOB (DEFCAT),
+   //             'Define User Catalog',
+   //             CLASS=A,
+   //             MSGCLASS=H,
+   //             MSGLEVEL=(1,1)
    //********************************************************************
-   //*                                                                   
-   //* Name: (DEFCAT)                                                    
-   //*                                                                   
-   //* Desc: Defines a User for the volume(s) specified by //VOL1        
-   //*       and create a user catalog on the voluem specifice in the    
-   //*       VOLUME (xxxxxx) parameter in DEFINE USERCATALOG.            
-   //*                                                                   
-   //*       After creating the User catalog, define an alias for all    
-   //*       DNS with the High level Qualifer specified in NAME(xxxxx)   
-   //*       and relate it to the User catalog                           
-   //*                                                                   
+   //*
+   //* Name: (DEFCAT)
+   //*
+   //* Desc: Defines a User for the volume(s) specified by //VOL1
+   //*       and create a user catalog on the voluem specifice in the
+   //*       VOLUME (xxxxxx) parameter in DEFINE USERCATALOG.
+   //*
+   //*       After creating the User catalog, define an alias for all
+   //*       DNS with the High level Qualifer specified in NAME(xxxxx)
+   //*       and relate it to the User catalog
+   //*
    //********************************************************************
-   //STEP1    EXEC PGM=IDCAMS,REGION=4096K                        
-   //SYSPRINT DD   SYSOUT=A                                       
-   //VOL1     DD   VOL=SER=USR000,UNIT=3350,DISP=OLD              
-   //SYSIN    DD   *                                              
-       DEFINE USERCATALOG -                                      
-             (NAME (UCUSR000) -                                  
-              VOLUME (USR000) -                                  
-              CYLINDERS (20) -                                   
-              FOR (9999) -                                       
-              BUFFERSPACE (8192) )                               
-                                                               
-       /* Define Alias for all dataset start with PRATHS      */ 
-       DEFINE ALIAS(NAME(PRATHS) RELATE (UCUSR000) )             
-   //                                                             
+   //STEP1    EXEC PGM=IDCAMS,REGION=4096K
+   //SYSPRINT DD   SYSOUT=A
+   //VOL1     DD   VOL=SER=USR000,UNIT=3350,DISP=OLD
+   //SYSIN    DD   *
+       DEFINE USERCATALOG -
+             (NAME (UCUSR000) -
+              VOLUME (USR000) -
+              CYLINDERS (20) -
+              FOR (9999) -
+              BUFFERSPACE (8192) )
+
+       /* Define Alias for all dataset start with PRATHS      */
+       DEFINE ALIAS(NAME(PRATHS) RELATE (UCUSR000) )
+   //
    ```
 ### Connecting an existing volume to a system
 When a volume is brought into the system from a prior functioning system that has its own User Catalog on the volume, the volume must be attached, added to the MVS configuration, and the catalog connected to the master catalog
 
 1. Copy DASD file<br>
    Copy the DASD file to /opt/tk5/dasd.usr directory, respectively run docker using `docker run --name mvs-tk5 -it --mount src=mvs-tk5_dasd.usr,target=/opt/tk5/dasd.usr -p 3270:3270 -p 8038:8038 mvs-tk5:latest` with a docker volume that already contains the DASD files
-   
+
 2. Attach the DASD file mount the volume
    - Attach DASD & mount it
    Attach the DASD using the following command in the MVS console:
@@ -236,7 +236,7 @@ When a volume is brought into the system from a prior functioning system that ha
    - Edit MVS Configuration<br>
      By modifying **SYS1.PARMLIB(VATLST00)** MVS will be instructed to automatically mount the volume, if accessible, and assign storage class 2 (Private)
      ```
-     USR000,0,2,3350    ,N                  User Volume 1 
+     USR000,0,2,3350    ,N                  User Volume 1
      ```
      <img width="636" alt="image" src="https://user-images.githubusercontent.com/43680256/229294781-e78fd5d8-e0f8-4d2e-8155-c4d65568ddcf.png">
 
@@ -252,24 +252,24 @@ When a volume is brought into the system from a prior functioning system that ha
 4. Import existing Catalog<br>
    As the existing volume already contains a User Catalog it must be imported and connected to the master catalog using:
    ```
-   //IMPCAT   JOB (IMPCAT),                                              
-   //             'Import User Catalog',                                 
-   //             CLASS=A,                                               
-   //             MSGCLASS=H,                                            
-   //             MSGLEVEL=(1,1)                                         
+   //IMPCAT   JOB (IMPCAT),
+   //             'Import User Catalog',
+   //             CLASS=A,
+   //             MSGCLASS=H,
+   //             MSGLEVEL=(1,1)
    //********************************************************************
-   //*                                                                   
-   //* Name: (IMPCAT)                                                    
-   //*                                                                   
-   //* Desc: Imports an existing User catalog and creates alias(es)      
-   //*                                                                   
+   //*
+   //* Name: (IMPCAT)
+   //*
+   //* Desc: Imports an existing User catalog and creates alias(es)
+   //*
    //********************************************************************
-   //STEP1    EXEC PGM=IDCAMS,REGION=4096K                               
-   //SYSPRINT DD   SYSOUT=A                                              
-   //VOL1     DD   UNIT=3350,DISP=OLD,VOL=SER=USR000                     
-   //SYSIN    DD   *                                                     
-     IMPORT CONNECT OBJECTS((UCUSR000 VOLUME(USR000) DEVT(3350)))        
-     DEFINE ALIAS(NAME(PRATHS) RELATE(UCUSR000))                         
+   //STEP1    EXEC PGM=IDCAMS,REGION=4096K
+   //SYSPRINT DD   SYSOUT=A
+   //VOL1     DD   UNIT=3350,DISP=OLD,VOL=SER=USR000
+   //SYSIN    DD   *
+     IMPORT CONNECT OBJECTS((UCUSR000 VOLUME(USR000) DEVT(3350)))
+     DEFINE ALIAS(NAME(PRATHS) RELATE(UCUSR000))
    //
    ```
 
@@ -293,10 +293,10 @@ services:
     container_name: mvs-tk5
     stdin_open: true          # docker run -i
     tty: true                 # docker run -t
-    cap_add: 
+    cap_add:
       - SYS_NICE
     network_mode: bridge
-    ports: 
+    ports:
       - 3270:3270
       - 8038:8038
     volumes:
