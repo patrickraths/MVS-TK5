@@ -7,10 +7,10 @@ services:
     container_name: mvs-tk5
     stdin_open: true          # docker run -i
     tty: true                 # docker run -t
-    cap_add: 
+    cap_add:
       - SYS_NICE
     network_mode: bridge
-    ports: 
+    ports:
       - 3270:3270
       - 8038:8038
     volumes:
@@ -34,7 +34,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/praths/Documents/tk5/dasd.usr'
+      device: ~/Documents/tk5/dasd.usr
   #
   # System Logs
   #
@@ -43,7 +43,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/praths/Documents/tk5/log'
+      device: ~/Documents/tk5/log
   #
   # Tape Devices
   #
@@ -52,7 +52,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/praths/Documents/tk5/tape'
+      device: ~/Documents/tk5/tape
   #
   # Printers
   #
@@ -61,7 +61,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/praths/Documents/tk5/prt'
+      device: ~/Documents/tk5/prt
   #
   # Card Readers
   #
@@ -70,5 +70,5 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/praths/Documents/tk5/pch'
+      device: ~/Documents/tk5/pch
 
