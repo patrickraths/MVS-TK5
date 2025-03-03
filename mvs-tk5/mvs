@@ -16,25 +16,14 @@ if [[ ${a:0:3} == 'arm' ]];then
    hf=`readelf -A /proc/self/exe | grep Tag_ABI_VFP_args`
    if [[ ${hf:2:3} == 'Tag' ]];then arch='arm';else arch='arm_softfloat';fi;fi
 if [[ $a == 'aarch64' ]];then arch='aarch64';fi
-#if [[ $a == 'x86_64' ]];then arch=64;fi
-#if [[ ${a:2:2} == '86' ]];then arch=32;fi
+if [[ $a == 'x86_64' ]];then arch=64;fi
+if [[ ${a:2:2} == '86' ]];then arch=32;fi
 system=`uname -s | awk '{print tolower($0)}'`
-case $system in
-linux)
-   force_arch=
-   export PATH=/opt/hercules/$system/$arch/bin:$PATH
-   export LD_LIBRARY_PATH=/opt/hercules/$system/$arch/lib:hercules/$system/$arch/lib/hercules:$LD_LIBRARY_PATH
-   ;;
-#darwin)
-#   export PATH=hercules/$system/bin:$PATH
-#   export DYLD_LIBRARY_PATH=hercules/$system/lib:hercules/$system/lib/hercules:$DYLD_LIBRARY_PATH
-#   if [[ $arch == '32' ]];then force_arch="arch -arch i386";else force_arch=;fi
-#   ;;
-*)
-   echo "System $system not supported."
-   exit
-   ;;
-esac
+
+force_arch=
+export PATH=/opt/hercules/$system/$arch/bin:$PATH
+export LD_LIBRARY_PATH=/opt/hercules/$system/$arch/lib:/opt/hercules/$system/$arch/lib/hercules:$LD_LIBRARY_PATH
+
 MODE=`head -1 unattended/mode 2>/dev/null`
 DAEMON="-d"
 if [[ $MODE == 'CONSOLE' ]]; then unset DAEMON; fi
