@@ -1,0 +1,18 @@
+//INITDASD JOB (INITDASD),
+//             'Initialize DASD',
+//             CLASS=A,
+//             MSGCLASS=H,
+//             MSGLEVEL=(1,1)
+//********************************************************************
+//*
+//* Name: (DEFCAT)
+//*
+//* Desc: Initializes a DASD for use with MVS
+//*
+//********************************************************************
+//STEP1    EXEC PGM=ICKDSF,REGION=4096K
+//SYSPRINT DD   SYSOUT=*
+//SYSIN    DD   *
+  INIT UNITADDRESS(34A) NOVERIFY VOLID(USR000) OWNER(HERCULES) -
+               VTOC(0,1,30)
+//

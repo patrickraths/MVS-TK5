@@ -1,0 +1,19 @@
+//IMPCAT   JOB (IMPCAT),
+//             'Import User Catalog',
+//             CLASS=A,
+//             MSGCLASS=H,
+//             MSGLEVEL=(1,1)
+//********************************************************************
+//*
+//* Name: (IMPCAT)
+//*
+//* Desc: Imports an existing User catalog and creates alias(es)
+//*
+//********************************************************************
+//STEP1    EXEC PGM=IDCAMS,REGION=4096K
+//SYSPRINT DD   SYSOUT=A
+//VOL1     DD   UNIT=3350,DISP=OLD,VOL=SER=USR000
+//SYSIN    DD   *
+  IMPORT CONNECT OBJECTS((UCUSR000 VOLUME(USR000) DEVT(3350)))
+  DEFINE ALIAS(NAME(PRATHS) RELATE(UCUSR000))
+//

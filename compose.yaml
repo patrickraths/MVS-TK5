@@ -19,6 +19,7 @@ services:
       - tape:/opt/tk5/tape
       - prt:/opt/tk5/prt
       - pch:/opt/tk5/pch
+      - jcl:/opt/tk5/jcl
     restart: no
 
 volumes:
@@ -72,3 +73,12 @@ volumes:
       o: 'bind'
       device: ~/Documents/tk5/pch
 
+  #
+  # JCL
+  #
+  jcl:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ~/Documents/tk5/jcl

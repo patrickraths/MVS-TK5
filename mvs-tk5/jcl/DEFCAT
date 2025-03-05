@@ -1,0 +1,32 @@
+//DEFCAT   JOB (DEFCAT),
+//             'Define User Catalog',
+//             CLASS=A,
+//             MSGCLASS=H,
+//             MSGLEVEL=(1,1)
+//********************************************************************
+//*
+//* Name: (DEFCAT)
+//*
+//* Desc: Defines a User for the volume(s) specified by //VOL1
+//*       and create a user catalog on the voluem specifice in the
+//*       VOLUME (xxxxxx) parameter in DEFINE USERCATALOG.
+//*
+//*       After creating the User catalog, define an alias for all
+//*       DNS with the High level Qualifer specified in NAME(xxxxx)
+//*       and relate it to the User catalog
+//*
+//********************************************************************
+//STEP1    EXEC PGM=IDCAMS,REGION=4096K
+//SYSPRINT DD   SYSOUT=A
+//VOL1     DD   VOL=SER=USR000,UNIT=3350,DISP=OLD
+//SYSIN    DD   *
+    DEFINE USERCATALOG -
+          (NAME (UCUSR000) -
+           VOLUME (USR000) -
+           CYLINDERS (20) -
+           FOR (9999) -
+           BUFFERSPACE (8192) )
+
+    /* Define Alias for all dataset start with PRATHS      */
+    DEFINE ALIAS(NAME(PRATHS) RELATE (UCUSR000) )
+//
